@@ -130,6 +130,9 @@ img{
 
 <body>
 
+<button class="flash">laser eyes on/off</button>
+<button class="color">Stop blinking!</button>
+
 <div class="robot">
   <div class="beep"></div>
   <div class="brain"></div>
@@ -140,8 +143,6 @@ img{
   <div class="foot"></div>
 </div>
 
-<button class="flash">laser eyes on/off</button>
-<button class="color">change color!</button>
 
 <script>
 // When eyes button is clicked, toggle laser class on brain
@@ -149,8 +150,9 @@ $(".flash").click(function() {
   $(".brain").toggleClass('laser');
 });
 
-// When color button is clicked...
-$(".color").click(function() {
+
+var timer = setInterval(funcaoMarota, 100);
+function funcaoMarota(){
   // assign each named color a random number 0-255
   var red = Math.floor(Math.random() * 255);
   var green = Math.floor(Math.random() * 255);
@@ -162,8 +164,12 @@ $(".color").click(function() {
   //alert(randomRGBA);
   //Display the three values in an alert window
   //alert(red + "," + green + "," + blue);
-});
+}
 
+// When color button is clicked...
+$(".color").click(function() {
+  clearInterval(timer);
+});
 
 </script>
 </body>
